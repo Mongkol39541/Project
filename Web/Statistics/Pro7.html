@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" href="Pro7.css">
+    <h1 class="H1">โปรแกรมคำนวณค่าทางสถิติ</h1>
+</head>
+<body>
+    <h2 class="H2" id = "ShowData"></h2>   <!--แสดงข้อมูล-->
+    <h2 class="H3" id = "NumberData"></h2> <!--แสดงจำนวนข้อมูล-->
+    
+    <input class="BoxInput" id = "InputNumber" type="text"/>
+    <button class="BoxButtonInput" onclick="InputList(document.getElementById('InputNumber').value)">ใส่ข้อมูล</button><br>   <!--ใส่ข้อมูลลงไปใน Array-->
+    <input class="BoxOurput" id = "OurputNumber" type="text"/>
+    <button class="BoxButtonOurput" onclick="OurputList(document.getElementById('OurputNumber').value)">ลบข้อมูลตำแหน่งนี้</button><br> <!--ลบข้อมูลในตำแหน่งที่เลือก-->
+
+    <input class="BoxButton" type="button" onclick="Quartile()" value="Calculate"/>   <!--คำนวณ-->
+    <h2 class="AnsQuartile1" id = "ShowQuartile1"></h2>  <!--ควอไทล์ 1-->
+    <h2 class="AnsQuartile2" id = "ShowQuartile2"></h2>  <!--ควอไทล์ 2-->
+    <h2 class="AnsQuartile3" id = "ShowQuartile3"></h2>  <!--ควอไทล์ 3-->
+    <h2 class="AnsOutlier" id = "ShowOutlier"></h2>    <!--ค่านอกเกณฑ์-->
+    <h2 class="AnsAverage1" id = "ShowAverage1"></h2>   <!--ค่าเฉลี่ยแบบนำค่านอกเกณ์มาคำนวณ-->
+    <h2 class="AnsAverage2" id = "ShowAverage2"></h2>   <!--ค่าเฉลี่ยแบบไม่นำค่านอกเกณ์มาคำนวณ-->
+    <script src = "Pro7.js"></script>
+
+</body>
+</html>
