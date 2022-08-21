@@ -1,0 +1,50 @@
+{% extends "layout.html" %}
+
+{% block body %}
+<div class="container my-2">
+    <div class="row">
+        <div class="col-md-6 my-2">
+            <h3>เพิ่มข้อมูลคะแนนสอบ</h3>
+            <form action="/addStatement" method="post">
+                <div class="form-group">
+                    <label for="name">ชื่อตัวละคร</label>
+                    <input type="text" name="name" class="form-control">
+                </div>
+                <div class="form-group">
+                    <label for="team">สังกัดแก๊ง</label>
+                    <input type="text" name="team" class="form-control">
+                </div>
+                <div class="form-group">
+                    <label for="sex">เพศของตัวละคร</label>
+                    <select name="sex" class="form-control">
+                        <option value="ชาย">ชาย</option>
+                        <option value="หญิง">หญิง</option>
+                        <option value="อื่นๆ">อื่นๆ</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="love">สถานะตัวละคร</label>
+                    <select name="love" class="form-control">
+                        <option value="โสด(กำลังตามจีบ)">โสด(กำลังตามจีบ)</option>
+                        <option value="โสด(รอคนมาจีบ)">โสด(รอคนมาจีบ)</option>
+                        <option value="โสด(อกหัก)">โสด(อกหัก)</option>
+                        <option value="โสด(ไม่สนใจ)">โสด(ไม่สนใจ)</option>
+                        <option value="มีคนคุยแล้ว">มีคนคุยแล้ว</option>
+                        <option value="มีแฟนแล้ว">มีแฟนแล้ว</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="score">คะแนน</label>
+                    <input type="text" name="score" class="form-control">
+                </div>
+                <div class="form-group">
+                    <label for="lost">ข้อที่ทำผิด</label>
+                    <input type="text" name="lost" class="form-control">
+                </div>
+                <input type="submit" value="เพิ่มข้อมูล" class="btn btn-success my-2">
+            </form>
+        </div>
+    </div>
+</div>
+
+{% endblock %}
