@@ -1,11 +1,9 @@
 import cv2
-import win32com.client
 
 class TestModel_capture3:
     def detect(cap, classifier, number_of_testID, scaleFactor, minNeighbors, color, listCLF, list_nameModel):
         gray = cv2.cvtColor(cap, cv2.COLOR_BGR2GRAY)
         features = classifier.detectMultiScale(gray, scaleFactor, minNeighbors)
-        speaker = win32com.client.Dispatch("SAPI.SpVoice")
         listcon = []
         for (x, y, w, h) in features:
             for m in range(number_of_testID):
@@ -20,8 +18,6 @@ class TestModel_capture3:
                 cv2.rectangle(cap, (x, y), (x+w, y+h), color, 2)
                 cv2.putText(cap, nameModel, (x, y-4), cv2.FONT_HERSHEY_SIMPLEX, 0.8, color, 2)
                 cv2.putText(cap, str(int(con))+"%", (x, y+20+h), cv2.FONT_HERSHEY_SIMPLEX, 0.8, color, 2)
-                if(cv2.waitKey(1) & 0xFF == ord('s')):
-                    speaker.Speak(nameModel)
         return cap
 
 class TestModel_capture2:

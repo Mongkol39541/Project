@@ -1,75 +1,75 @@
-from random import randrange
+import numpy as np
 
 class RATEPokemon:
-    def playRATE(Carater, CaraterEvolution, CaraterMaga, CaraterGiga, numberRandom):
-        RandomCarater = []
-        for r in range(1,66):
-            if int(len(Carater)) == 0:
+    def play_rate(carater, carater_evolution, carater_maga, carater_giga, number_random):
+        random_carater = []
+        for loop_r in range(1, 66):
+            if len(carater) == 0:
                 break
-            if r > int(len(Carater)):
-                r = r%int(len(Carater))
-            RandomCarater.append(Carater[r-1])
-        for sr in range(1,21):
-            if int(len(CaraterEvolution)) == 0:
+            if loop_r > len(carater):
+                loop_r = loop_r % len(carater)
+            random_carater.append(carater[int(loop_r - 1)])
+        for loop_sr in range(1, 21):
+            if len(carater_evolution) == 0:
                 break
-            if sr > int(len(CaraterEvolution)):
-                sr = sr%int(len(CaraterEvolution))
-            RandomCarater.append(CaraterEvolution[sr-1])
-        for ssr in range(1,11):
-            if int(len(CaraterMaga)) == 0:
+            if loop_sr > len(carater_evolution):
+                loop_sr = loop_sr % len(carater_evolution)
+            random_carater.append(carater_evolution[int(loop_sr - 1)])
+        for loop_ssr in range(1, 11):
+            if len(carater_maga) == 0:
                 break
-            if ssr > int(len(CaraterMaga)):
-                ssr = ssr%int(len(CaraterMaga))
-            RandomCarater.append(CaraterMaga[ssr-1])
-        for sp in range(1,6):
-            if int(len(CaraterGiga)) == 0:
+            if loop_ssr > len(carater_maga):
+                loop_ssr = loop_ssr % len(carater_maga)
+            random_carater.append(carater_maga[int(loop_ssr - 1)])
+        for loop_sp in range(1, 6):
+            if len(carater_giga) == 0:
                 break
-            if sp > int(len(CaraterGiga)):
-                sp = sp%int(len(CaraterGiga))
-            RandomCarater.append(CaraterGiga[sp-1])
-        GetPokemon, GetGrade, HapSSR, HapSP = RandomPokemon.playRandom(RandomCarater, CaraterMaga, CaraterGiga, numberRandom)
-        return GetPokemon, GetGrade, HapSSR, HapSP
+            if loop_sp > len(carater_giga):
+                loop_sp = loop_sp % len(carater_giga)
+            random_carater.append(carater_giga[int(loop_sp-1)])
+        get_pokemon, get_grade, hap_ssr, hap_sp = RandomPokemon.play_random(random_carater, carater_maga, carater_giga, number_random)
+        return get_pokemon, get_grade, hap_ssr, hap_sp
 
 class RandomPokemon:
-    def playRandom(RandomCarater, CaraterMaga, CaraterGiga, numberRandom):
-        GetPokemon = []
-        GetGrade = []
-        HapSSR = 0
-        HapSP = 0
-        ListHapSSR = []
-        ListHapSP = []
-        for rd in range(numberRandom):
-            GetCarater = randrange(len(RandomCarater))
-            if int(GetCarater) < 65 :
-                Grade = "R"
-            if 65 <= int(GetCarater) < 85:
-                Grade = "SR"
-            if 85 <= int(GetCarater) < 95:
-                Grade = "SSR"
-            if int(GetCarater) >= 95:
-                Grade = "SP"
-            GetPokemon.append(RandomCarater[GetCarater])
-            GetGrade.append(Grade)
-            for addMaga in range(2):
-                if int(len(CaraterMaga)) == 0:
+    def play_random(random_carater, carater_maga, carater_giga, number_random):
+        get_pokemon = []
+        get_grade = []
+        hap_ssr = 0
+        hap_sp = 0
+        listhap_ssr = []
+        listhap_sp = []
+        for _ in range(number_random):
+            get_carater = np.random.randint(len(random_carater))
+            if get_carater < 65 :
+                grade = "R"
+            if 65 <= get_carater < 85:
+                grade = "SR"
+            if 85 <= get_carater < 95:
+                grade = "SSR"
+            if get_carater >= 95:
+                grade = "SP"
+            get_pokemon.append(random_carater[get_carater])
+            get_grade.append(grade)
+            for _ in range(2):
+                if len(carater_maga) == 0:
                     break
-                RandomCarater.append(CaraterMaga[randrange(len(CaraterMaga))])
-                HapSSR = HapSSR+1
-            for addGiga in range(1):
-                if int(len(CaraterGiga)) == 0:
+                random_carater.append(carater_maga[np.random.randint(len(carater_maga))])
+                hap_ssr = hap_ssr + 1
+            for _ in range(1):
+                if len(carater_giga) == 0:
                     break
-                RandomCarater.append(CaraterGiga[randrange(len(CaraterGiga))])
-                HapSP = HapSP+1
-            if Grade == "SSR":
-                for removeSSR in range(len(RandomCarater)-100):
-                    RandomCarater.pop(100)
-                HapSSR = 0
-                HapSP = 0
-            if Grade == "SP":
-                for removeSP in range(len(RandomCarater)-100):
-                    RandomCarater.pop(100)
-                HapSSR = 0
-                HapSP = 0
-            ListHapSSR.append(HapSSR)
-            ListHapSP.append(HapSP)
-        return GetPokemon, GetGrade, ListHapSSR, ListHapSP
+                random_carater.append(carater_giga[np.random.randint(len(carater_giga))])
+                hap_sp = hap_sp + 1
+            if grade == "SSR":
+                for _ in range(len(random_carater)-100):
+                    random_carater.pop(100)
+                hap_ssr = 0
+                hap_sp = 0
+            if grade == "SP":
+                for _ in range(len(random_carater)-100):
+                    random_carater.pop(100)
+                hap_ssr = 0
+                hap_sp = 0
+            listhap_ssr.append(hap_ssr)
+            listhap_sp.append(hap_sp)
+        return get_pokemon, get_grade, listhap_ssr, listhap_sp

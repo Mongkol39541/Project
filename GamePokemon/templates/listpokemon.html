@@ -1,0 +1,386 @@
+{% extends "layout.html" %}
+
+{% block content %}
+<div class="p-3 bg-dark text-white">
+    <h1 class="text-center my-5">🔰 รายชื่อโปรเกม่อนทั้งหมด</h1>
+    <div class="row row-cols-1 row-cols-md-3 g-4 my-3">
+        <div class="col my-3">
+          <div class="card rounded mx-auto d-block" style="width: 18rem;">
+            <img src="../static/ฟ็อกโกะ.png" class="card-img-top" alt="...">
+            <div class="card-body bg-danger">
+                <h5 class="card-title text-center">ฟ็อกโกะ</h5>
+                <p class="card-text">พอได้กินกิ่งไม้จะแข็งแรงขึ้นและพ่นไอร้อนที่มีอุณหภูมิเกิน 200 องศาออกมาจากหูที่มีขนาดใหญ่โต</p>
+                <div class="text-center">
+                    <a href="#" class="btn btn-light">ข้อมูลตัวละคร</a>
+                </div>
+            </div>
+          </div>
+          <br>
+        </div>
+        <div class="col my-3">
+          <div class="card rounded mx-auto d-block" style="width: 18rem;">
+            <img src="../static/อาชาโม.png" class="card-img-top" alt="...">
+            <div class="card-body bg-danger">
+                <h5 class="card-title text-center">อาชาโม</h5>
+                <p class="card-text">จะเดินเตาะแตะเกาะติดเทรนเนอร์ เปลวไฟที่พ่นออกมาจากปากมีอุณหภูมิ 1000 องศา จะทำให้ศัตรูไหม้เกรียมด้วยลูกไฟที่ลุกโชน</p>
+                <div class="text-center">
+                    <a href="#" class="btn btn-light">ข้อมูลตัวละคร</a>
+                </div>
+            </div>
+          </div>
+          <br>
+        </div>
+        <div class="col my-3">
+          <div class="card rounded mx-auto d-block" style="width: 18rem;">
+            <img src="../static/ฮิบานี.png" class="card-img-top" alt="...">
+            <div class="card-body bg-danger">
+              <h5 class="card-title text-center">ฮิบานี</h5>
+              <p class="card-text">เมื่อวิ่งไปมาจนอุณหภูมิร่างกายสูงขึ้นแล้ว พลังงานไฟจะไหลเวียนทั่วร่างและสามารถแสดงพลังที่แท้จริงออกมา</p>
+              <div class="text-center">
+                <a href="#" class="btn btn-light">ข้อมูลตัวละคร</a>
+                </div>
+            </div>
+          </div>
+          <br>
+        </div>
+        <div class="col my-3">
+          <div class="card rounded mx-auto d-block" style="width: 18rem;">
+            <img src="../static/ฮิโตคาเงะ.png" class="card-img-top" alt="...">
+            <div class="card-body bg-danger">
+              <h5 class="card-title text-center">ฮิโตคาเงะ</h5>
+              <p class="card-text">มีนิสัยชอบของร้อน เมื่อเปียกฝนจะมีควันออกมาจากหาง</p>
+              <div class="text-center">
+                <a href="#" class="btn btn-light">ข้อมูลตัวละคร</a>
+                </div>
+            </div>
+          </div>
+          <br>
+        </div>
+        <div class="col my-3">
+            <div class="card rounded mx-auto d-block" style="width: 18rem;">
+              <img src="../static/ฮิโนอาราชิ.png" class="card-img-top" alt="...">
+              <div class="card-body bg-danger">
+                <h5 class="card-title text-center">ฮิโนอาราชิ</h5>
+                <p class="card-text">สามารถพ่นไฟออกจากหลังเพื่อป้องกันตัวเองจากภัย ตอนกำลังโกรธไฟจะพุ่งแรง แต่พอเหนื่อย การเผาไหม้จะไม่สมบูรณ์</p>
+                <div class="text-center">
+                  <a href="#" class="btn btn-light">ข้อมูลตัวละคร</a>
+                  </div>
+              </div>
+            </div>
+            <br>
+          </div>
+        <div class="col my-3">
+            <div class="card rounded mx-auto d-block" style="width: 18rem;">
+              <img src="../static/เซนิกาเมะ.png" class="card-img-top" alt="...">
+              <div class="card-body bg-info">
+                <h5 class="card-title text-center">เซนิกาเมะ</h5>
+                <p class="card-text">หน้าที่ของกระดองไม่ได้มีไว้แค่ปกป้องร่างกายเท่านั้น แต่กระดองทรงกลมและร่องที่ผิวนั้นยังมีไว้เพื่อลดแรงเสียดทานของน้ำ ทำให้ว่ายน้ำได้อย่างรวดเร็ว</p>
+                <div class="text-center">
+                  <a href="#" class="btn btn-light">ข้อมูลตัวละคร</a>
+                  </div>
+              </div>
+            </div>
+            <br>
+          </div>
+        <div class="col my-3">
+            <div class="card rounded mx-auto d-block" style="width: 18rem;">
+              <img src="../static/แครบ.png" class="card-img-top" alt="...">
+              <div class="card-body bg-info">
+                <h5 class="card-title text-center">แครบ</h5>
+                <p class="card-text">พบเจอได้ใกล้ทะเล ก้ามใหญ่นั้นแม้จะถูกฉีกออกก็งอกออกมาใหม่ได้</p>
+                <div class="text-center">
+                  <a href="#" class="btn btn-light">ข้อมูลตัวละคร</a>
+                  </div>
+              </div>
+            </div>
+            <br>
+          </div>
+        <div class="col my-3">
+            <div class="card rounded mx-auto d-block" style="width: 18rem;">
+              <img src="../static/คอยคิง.png" class="card-img-top" alt="...">
+              <div class="card-body bg-info">
+                <h5 class="card-title text-center">คอยคิง</h5>
+                <p class="card-text">แทบไม่มีทั้งพลังและความเร็ว โปเกมอนที่อ่อนแอและน่าสมเพชที่สุดในโลก</p>
+                <div class="text-center">
+                  <a href="#" class="btn btn-light">ข้อมูลตัวละคร</a>
+                  </div>
+              </div>
+            </div>
+            <br>
+          </div>
+        <div class="col my-3">
+            <div class="card rounded mx-auto d-block" style="width: 18rem;">
+              <img src="../static/ลาพลาซ.png" class="card-img-top" alt="...">
+              <div class="card-body bg-info">
+                <h5 class="card-title text-center">ลาพลาซ</h5>
+                <p class="card-text">โปเกมอนที่ฉลาดและใจดี ร้องเพลงด้วยเสียงอันไพเราะพร้อมกับว่ายไปบนผิวน้ำทะเล</p>
+                <div class="text-center">
+                  <a href="#" class="btn btn-light">ข้อมูลตัวละคร</a>
+                  </div>
+              </div>
+            </div>
+            <br>
+          </div>
+        <div class="col my-3">
+            <div class="card rounded mx-auto d-block" style="width: 18rem;">
+              <img src="../static/วานิโนโกะ.png" class="card-img-top" alt="...">
+              <div class="card-body bg-info">
+                <h5 class="card-title text-center">วานิโนโกะ</h5>
+                <p class="card-text">ถึงจะตัวเล็กแต่มีขากรรไกรที่ทรงพลังขนาดที่ตัวของวานิโนโกะตั้งใจแค่จะขบเบาๆแต่กลายเป็นทำให้อีกฝ่ายเจ็บหนักไปเลย</p>
+                <div class="text-center">
+                  <a href="#" class="btn btn-light">ข้อมูลตัวละคร</a>
+                  </div>
+              </div>
+            </div>
+            <br>
+          </div>
+        <div class="col my-3">
+            <div class="card rounded mx-auto d-block" style="width: 18rem;">
+              <img src="../static/คิบาเนีย.png" class="card-img-top" alt="...">
+              <div class="card-body bg-info">
+                <h5 class="card-title text-center">คิบาเนีย</h5>
+                <p class="card-text">มีนิสัยขี้ขลาด ถ้าอยู่ตัวเดียว จะไม่กล้าออกล่าเหยื่อ แต่พออยู่รวมกันได้ซัก 5 ตัวจะดุร้ายขึ้นมาอย่างเฉียบพลัน</p>
+                <div class="text-center">
+                  <a href="#" class="btn btn-light">ข้อมูลตัวละคร</a>
+                  </div>
+              </div>
+            </div>
+            <br>
+          </div>
+        <div class="col my-3">
+            <div class="card rounded mx-auto d-block" style="width: 18rem;">
+              <img src="../static/เมซซอน.png" class="card-img-top" alt="...">
+              <div class="card-body bg-info">
+                <h5 class="card-title text-center">เมซซอน</h5>
+                <p class="card-text">เมื่อหวาดกลัว จะปล่อยน้ำตาที่มีสารเร่งน้ำตาเทียบเท่าหัวหอม 100 หัวทำให้ร้องไห้ตามไปด้วย</p>
+                <div class="text-center">
+                  <a href="#" class="btn btn-light">ข้อมูลตัวละคร</a>
+                  </div>
+              </div>
+            </div>
+            <br>
+          </div>
+          <div class="col my-3">
+            <div class="card rounded mx-auto d-block" style="width: 18rem;">
+              <img src="../static/พิชู.png" class="card-img-top" alt="...">
+              <div class="card-body bg-warning">
+                <h5 class="card-title text-center">พิชู</h5>
+                <p class="card-text">ถึงตัวจะเล็ก แต่สามารถปล่อยพลังช็อตไฟฟ้าขนาดที่ทำให้ผู้ใหญ่ช็อตได้ แต่ตัวเองก็ดันตกใจเองด้วย</p>
+                <div class="text-center">
+                  <a href="#" class="btn btn-light">ข้อมูลตัวละคร</a>
+                  </div>
+              </div>
+            </div>
+            <br>
+          </div>
+          <div class="col my-3">
+            <div class="card rounded mx-auto d-block" style="width: 18rem;">
+              <img src="../static/ราคุไร.png" class="card-img-top" alt="...">
+              <div class="card-body bg-warning">
+                <h5 class="card-title text-center">ราคุไร</h5>
+                <p class="card-text">สะสมไฟฟ้าสถิตย์ไว้ที่ขนตามตัวแล้วปล่อยพลังงานไฟฟ้าออกมา หากพายุใกล้เข้ามา จะปล่อยประกายไฟออกมาทั่วร่าง</p>
+                <div class="text-center">
+                  <a href="#" class="btn btn-light">ข้อมูลตัวละคร</a>
+                  </div>
+              </div>
+            </div>
+            <br>
+          </div>
+          <div class="col my-3">
+            <div class="card rounded mx-auto d-block" style="width: 18rem;">
+              <img src="../static/ชิมามา.png" class="card-img-top" alt="...">
+              <div class="card-body bg-warning">
+                <h5 class="card-title text-center">ชิมามา</h5>
+                <p class="card-text">จะปรากฏตัวเมื่อท้องฟ้าปกคลุมไปด้วยเมฆฝน และจะสะสมไฟฟ้าโดยใช้ผมที่ตั้งจับสายฟ้า</p>
+                <div class="text-center">
+                  <a href="#" class="btn btn-light">ข้อมูลตัวละคร</a>
+                  </div>
+              </div>
+            </div>
+            <br>
+          </div>
+          <div class="col my-3">
+            <div class="card rounded mx-auto d-block" style="width: 18rem;">
+              <img src="../static/เอเลซัน.png" class="card-img-top" alt="...">
+              <div class="card-body bg-warning">
+                <h5 class="card-title text-center">เอเลซัน</h5>
+                <p class="card-text">หลั่งสารพิษที่เก็บไว้ในถุงพิษในร่างกายจากผิวหนัง เมื่อสัมผัสจะชาแปล๊บ ๆ</p>
+                <div class="text-center">
+                  <a href="#" class="btn btn-light">ข้อมูลตัวละคร</a>
+                  </div>
+              </div>
+            </div>
+            <br>
+          </div>
+          <div class="col my-3">
+            <div class="card rounded mx-auto d-block" style="width: 18rem;">
+              <img src="../static/โคลิงก์.png" class="card-img-top" alt="...">
+              <div class="card-body bg-warning">
+                <h5 class="card-title text-center">โคลิงก์</h5>
+                <p class="card-text">เมื่อขยับตัวกล้ามเนื้อจะยืดหดจนเกิดไฟฟ้า เมื่อเข้าตาจนร่างกายจะเปล่งประกาย</p>
+                <div class="text-center">
+                  <a href="#" class="btn btn-light">ข้อมูลตัวละคร</a>
+                  </div>
+              </div>
+            </div>
+            <br>
+          </div>
+          <div class="col my-3">
+            <div class="card rounded mx-auto d-block" style="width: 18rem;">
+              <img src="../static/โวลโทลอสฟอร์มอวตาร.png" class="card-img-top" alt="...">
+              <div class="card-body bg-warning">
+                <h5 class="card-title text-center">โวลโทลอสฟอร์มอวตาร</h5>
+                <p class="card-text">จะปล่อยไฟฟ้าออกมาจากหนามที่หาง จะบินวนเวียนบนท้องฟ้าในเขตอิช แล้วปล่อยสายฟ้าลงมา</p>
+                <div class="text-center">
+                  <a href="#" class="btn btn-light">ข้อมูลตัวละคร</a>
+                  </div>
+              </div>
+            </div>
+            <br>
+          </div>
+          <div class="col my-3">
+            <div class="card rounded mx-auto d-block" style="width: 18rem;">
+              <img src="../static/ฟุชิกิดาเนะ.png" class="card-img-top" alt="...">
+              <div class="card-body bg-success">
+                <h5 class="card-title text-center">ฟุชิกิดาเนะ</h5>
+                <p class="card-text">มักพบเห็นมันนอนกลางแดดตอนกลางวัน การได้อาบแสงอาทิตย์อย่างเต็มที่จะทำให้เมล็ดที่อยู่กลางหลังเติบโตใหญ่ขึ้น</p>
+                <div class="text-center">
+                  <a href="#" class="btn btn-light">ข้อมูลตัวละคร</a>
+                  </div>
+              </div>
+            </div>
+            <br>
+          </div>
+          <div class="col my-3">
+            <div class="card rounded mx-auto d-block" style="width: 18rem;">
+              <img src="../static/จิโคริตา.png" class="card-img-top" alt="...">
+              <div class="card-body bg-success">
+                <h5 class="card-title text-center">จิโคริตา</h5>
+                <p class="card-text">จะคอยแกว่งใบไม้เพื่อขู่ฝ่ายตรงข้าม แต่เพราะมีกลิ่นหอมหวานออกมาจากใบไม้ ทำให้ทั้งสองฝ่ายเกิดความรู้สึกสมานฉันท์แทน</p>
+                <div class="text-center">
+                  <a href="#" class="btn btn-light">ข้อมูลตัวละคร</a>
+                  </div>
+              </div>
+            </div>
+            <br>
+          </div>
+          <div class="col my-3">
+            <div class="card rounded mx-auto d-block" style="width: 18rem;">
+              <img src="../static/จิโคริตา.png" class="card-img-top" alt="...">
+              <div class="card-body bg-success">
+                <h5 class="card-title text-center">จิโคริตา</h5>
+                <p class="card-text">สามารถปีนกำแพงที่ตั้งตรงโดยใช้หนามที่อยู่หลังฝ่าเท้าเกาะเกี่ยว โจมตีด้วยการใช้หางที่โตฟาดตี</p>
+                <div class="text-center">
+                  <a href="#" class="btn btn-light">ข้อมูลตัวละคร</a>
+                  </div>
+              </div>
+            </div>
+            <br>
+          </div>
+          <div class="col my-3">
+            <div class="card rounded mx-auto d-block" style="width: 18rem;">
+              <img src="../static/ยูกิคาบูริ.png" class="card-img-top" alt="...">
+              <div class="card-body bg-success">
+                <h5 class="card-title text-center">ยูกิคาบูริ</h5>
+                <p class="card-text">อาศัยอยู่ในเขาที่มีหิมะหนาลึก จะแทงขาเข้าไปในหิมะเพื่อดูดน้ำและไอเย็น</p>
+                <div class="text-center">
+                  <a href="#" class="btn btn-light">ข้อมูลตัวละคร</a>
+                  </div>
+              </div>
+            </div>
+            <br>
+          </div>
+          <div class="col my-3">
+            <div class="card rounded mx-auto d-block" style="width: 18rem;">
+              <img src="../static/คุไซฮานะ.png" class="card-img-top" alt="...">
+              <div class="card-body bg-success">
+                <h5 class="card-title text-center">คุไซฮานะ</h5>
+                <p class="card-text">กลิ่นเหม็นรุนแรงที่เกสรตัวเมียปล่อยออกมาไปไกลถึง 2 กิโลเมตรและทำให้หมดสติได้</p>
+                <div class="text-center">
+                  <a href="#" class="btn btn-light">ข้อมูลตัวละคร</a>
+                  </div>
+              </div>
+            </div>
+            <br>
+          </div>
+          <div class="col my-3">
+            <div class="card rounded mx-auto d-block" style="width: 18rem;">
+              <img src="../static/ฮาซึโบ.png" class="card-img-top" alt="...">
+              <div class="card-body bg-success">
+                <h5 class="card-title text-center">ฮาซึโบ</h5>
+                <p class="card-text">เดินหาน้ำสะอาด ถ้าไม่ได้ดื่มน้ำเป็นเวลานาน ใบไม้ที่หัวจะเฉา</p>
+                <div class="text-center">
+                  <a href="#" class="btn btn-light">ข้อมูลตัวละคร</a>
+                  </div>
+              </div>
+            </div>
+            <br>
+          </div>
+          <div class="col my-3">
+            <div class="card rounded mx-auto d-block" style="width: 18rem;">
+              <img src="../static/นูมาโคร.png" class="card-img-top" alt="...">
+              <div class="card-body" style="background-color:#ff6347;">
+                <h5 class="card-title text-center">นูมาโคร</h5>
+                <p class="card-text">ตามพื้นผิวของร่างกายจะมีเยื่อเหนียวบางๆ ปกคลุมอยู่เพื่อให้ใช้ชีวิตบนบกได้ จะเล่นโคลน ณ ริมฝั่งทะเลตอนน้ำลด</p>
+                <div class="text-center">
+                  <a href="#" class="btn btn-light">ข้อมูลตัวละคร</a>
+                  </div>
+              </div>
+            </div>
+            <br>
+          </div>
+          <div class="col my-3">
+            <div class="card rounded mx-auto d-block" style="width: 18rem;">
+              <img src="../static/ดอนเมล.png" class="card-img-top" alt="...">
+              <div class="card-body" style="background-color:#ff6347;">
+                <h5 class="card-title text-center">ดอนเมล</h5>
+                <p class="card-text">แม้จะทื่อๆบื้อๆขนาดที่ถูกทุบก็ไม่รู้สึกตัว แต่ไม่เคยอดทนกับความหิวได้เลยแม้วินาทีเดียว ภายในตัวแม็กม่าเดือดระอุปะทุอยู่</p>
+                <div class="text-center">
+                  <a href="#" class="btn btn-light">ข้อมูลตัวละคร</a>
+                  </div>
+              </div>
+            </div>
+            <br>
+          </div>
+          <div class="col my-3">
+            <div class="card rounded mx-auto d-block" style="width: 18rem;">
+              <img src="../static/กาไบต์.png" class="card-img-top" alt="...">
+              <div class="card-body" style="background-color:#ff6347;">
+                <h5 class="card-title text-center">กาไบต์</h5>
+                <p class="card-text">ชอบของที่ส่องแสง เมื่อเจอยามิรามิที่หมายตาเมเลซีอยู่ จะโกรธอย่างรุนแรงแล้วเข้าโจมตี</p>
+                <div class="text-center">
+                  <a href="#" class="btn btn-light">ข้อมูลตัวละคร</a>
+                  </div>
+              </div>
+            </div>
+            <br>
+          </div>
+          <div class="col my-3">
+            <div class="card rounded mx-auto d-block" style="width: 18rem;">
+              <img src="../static/ซีการ์ดฟอร์ม 10%.png" class="card-img-top" alt="...">
+              <div class="card-body" style="background-color:#ff6347;">
+                <h5 class="card-title text-center">ซีการ์ดฟอร์ม 10%</h5>
+                <p class="card-text">เป็นร่างของซีการ์ดส่วนหนึ่งราว 10％ มารวมกัน จะพุ่งใส่ฝ่ายตรงข้ามแล้วกัดด้วยเขี้ยวอันแหลมคม</p>
+                <div class="text-center">
+                  <a href="#" class="btn btn-light">ข้อมูลตัวละคร</a>
+                  </div>
+              </div>
+            </div>
+            <br>
+          </div>
+          <div class="col my-3">
+            <div class="card rounded mx-auto d-block" style="width: 18rem;">
+              <img src="../static/ซึนะเฮบิ.png" class="card-img-top" alt="...">
+              <div class="card-body" style="background-color:#ff6347;">
+                <h5 class="card-title text-center">ซึนะเฮบิ</h5>
+                <p class="card-text">ขุดหลุมไปพร้อมกับเก็บทรายที่กินไว้ในถุงคอ ใส่ทรายได้ถึง 8 กิโลกรัม</p>
+                <div class="text-center">
+                  <a href="#" class="btn btn-light">ข้อมูลตัวละคร</a>
+                  </div>
+              </div>
+            </div>
+            <br>
+          </div>
+    </div>
+</div>
+{% endblock %}
