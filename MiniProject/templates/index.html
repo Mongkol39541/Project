@@ -73,14 +73,23 @@
 <div class="p-3 bg-dark text-white">
   <div class="row row-cols-1 row-cols-md-2 g-4 my-1">
     <div class="col my-2">
-      <div
-        class="card rounded mx-auto d-block text-center"
-        style="width: 40rem"
-      >
-        <img src="../static/เบล.jpg" class="card-img-top" alt="..." />
+      <div class="card rounded mx-auto d-block text-center" style="width: 100%">
+        <img src="../static/โทรศัพท์.jpg" class="card-img-top" alt="..." />
         <div class="containgr text-danger">
           <br />
           <form action="/sendphone/{{statement.id}}" method="post">
+            <input
+              type="hidden"
+              id="positive_resultphone"
+              value="{{statement.positive_resultphone}}"
+              name="positive_resultphone"
+            />
+            <input
+              type="hidden"
+              id="negative_resultphone"
+              value="{{statement.negative_resultphone}}"
+              name="negative_resultphone"
+            />
             <div class="row">
               <label class="col order-first align-self-center"
                 >หมายเลขโทรศัพท์</label
@@ -107,6 +116,7 @@
                       role="button"
                       aria-expanded="false"
                       aria-controls="multiCollapseExample1"
+                      onclick="myFunction()"
                       >แสดงผล</a
                     >
                   </div>
@@ -126,61 +136,69 @@
         id="multiCollapseExample1"
       >
         <h4 class="alert-heading">
-          ทำนายโชคชะตาของผู้ใช้เบอร์ 0626051693 เป็นประจำ
+          ทำนายโชคชะตาของผู้ใช้เบอร์ {{statement.phone}} เป็นประจำ
         </h4>
         <hr />
         <div class="row row-cols-1 row-cols-md-2 g-4 my-3">
           <div class="col my-3">
-            <p class="mb-0">
-              ชอบแข่งขัน มีโชคด้านการแข่งขัน ตัดสินใจรวดเร็ว ดีเรื่องงาน
-              ชอบอะไรเร็ว ชอบความเร็ว สนใจในนวัตกรรมเทคโนโลยีสมัยใหม่
-              หรือไม่ก็สนใจศาสตร์เร้นลับ เรื่องเหนือธรรมชาติ
-              ที่วิทยาศาสตร์หาคำตอบอธิบายได้ยาก มีจิตสัมผัสสิ่งลี้ลับได้
-              มักได้ใกล้ชิดวัตถุโบราณ ของพลังมีไว้ครอบครอง มีโชคลาภไม่คาดฝัน
-              ขยัน ชอบทำงาน เหมาะมากกับงานที่ไม่หยุดนิ่ง
-            </p>
+            <p class="mb-0">{{statement.mesphone}}</p>
           </div>
           <div class="col my-3">
             <canvas id="myChart_1"></canvas>
             <script>
-              const ctx_1 = document.getElementById("myChart_1");
-              const myChart_1 = new Chart(ctx_1, {
-                type: "doughnut",
-                data: {
-                  labels: ["ผลบวก", "ผลลบ"],
-                  datasets: [
-                    {
-                      label: "# of Votes",
-                      data: [30, 70],
-                      backgroundColor: [
-                        "rgba(75, 192, 192, 0.2)",
-                        "rgba(255, 99, 132, 0.2)",
-                      ],
-                      borderColor: [
-                        "rgba(75, 192, 192, 1)",
-                        "rgba(255, 99, 132, 1)",
-                      ],
-                      borderWidth: 1,
-                    },
-                  ],
-                },
-              });
+              function myFunction() {
+                const ctx_1 = document.getElementById("myChart_1");
+                let positive = document.getElementById(
+                  "positive_resultphone"
+                ).value;
+                let negative = document.getElementById(
+                  "negative_resultphone"
+                ).value;
+                const myChart_1 = new Chart(ctx_1, {
+                  type: "doughnut",
+                  data: {
+                    labels: ["ผลบวก", "ผลลบ"],
+                    datasets: [
+                      {
+                        label: "# of Votes",
+                        data: [positive, negative],
+                        backgroundColor: [
+                          "rgb(255, 99, 132)",
+                          "rgb(54, 162, 235)",
+                        ],
+                        hoverOffset: 4,
+                      },
+                    ],
+                  },
+                });
+              }
             </script>
-            <h4 class="text-center my-3">น้ำหนักคำพยากรณ์ 30 %</h4>
+            <h4 class="text-center my-3">
+              น้ำหนักคำพยากรณ์ {{statement.positive_resultphone}} %
+            </h4>
           </div>
         </div>
       </div>
     </div>
 
     <div class="col my-2">
-      <div
-        class="card rounded mx-auto d-block text-center"
-        style="width: 40rem"
-      >
-        <img src="../static/ปุยเมฆ.jpg" class="card-img-top" alt="..." />
+      <div class="card rounded mx-auto d-block text-center" style="width: 100%">
+        <img src="../static/รถยนต์.jpg" class="card-img-top" alt="..." />
         <div class="containgr text-danger">
           <br />
           <form action="/sendcar/{{statement.id}}" method="post">
+            <input
+              type="hidden"
+              id="positive_resultcar"
+              value="{{statement.positive_resultcar}}"
+              name="positive_resultcar"
+            />
+            <input
+              type="hidden"
+              id="negative_resultcar"
+              value="{{statement.negative_resultcar}}"
+              name="negative_resultcar"
+            />
             <div class="row">
               <label class="col order-first align-self-center"
                 >ทะเบียนรถยนต์</label
@@ -207,6 +225,7 @@
                       role="button"
                       aria-expanded="false"
                       aria-controls="multiCollapseExample2"
+                      onclick="myFunction_2()"
                       >แสดงผล</a
                     >
                   </div>
@@ -226,47 +245,44 @@
         id="multiCollapseExample2"
       >
         <h4 class="alert-heading">
-          ทำนายโชคชะตาของผู้ใช้เบอร์ 0626051693 เป็นประจำ
+          ทำนายโชคชะตาของผู้ใช้ทะเบียน {{statement.car}} เป็นประจำ
         </h4>
         <hr />
         <div class="row row-cols-1 row-cols-md-2 g-4 my-3">
           <div class="col my-3">
-            <p class="mb-0">
-              ชอบแข่งขัน มีโชคด้านการแข่งขัน ตัดสินใจรวดเร็ว ดีเรื่องงาน
-              ชอบอะไรเร็ว ชอบความเร็ว สนใจในนวัตกรรมเทคโนโลยีสมัยใหม่
-              หรือไม่ก็สนใจศาสตร์เร้นลับ เรื่องเหนือธรรมชาติ
-              ที่วิทยาศาสตร์หาคำตอบอธิบายได้ยาก มีจิตสัมผัสสิ่งลี้ลับได้
-              มักได้ใกล้ชิดวัตถุโบราณ ของพลังมีไว้ครอบครอง มีโชคลาภไม่คาดฝัน
-              ขยัน ชอบทำงาน เหมาะมากกับงานที่ไม่หยุดนิ่ง
-            </p>
+            <p class="mb-0">{{statement.mescar}}</p>
           </div>
           <div class="col my-3">
             <canvas id="myChart_2"></canvas>
             <script>
-              const ctx_2 = document.getElementById("myChart_2");
-              const myChart_2 = new Chart(ctx_2, {
-                type: "doughnut",
-                data: {
-                  labels: ["ผลบวก", "ผลลบ"],
-                  datasets: [
-                    {
-                      label: "# of Votes",
-                      data: [30, 70],
-                      backgroundColor: [
-                        "rgba(75, 192, 192, 0.2)",
-                        "rgba(255, 99, 132, 0.2)",
-                      ],
-                      borderColor: [
-                        "rgba(75, 192, 192, 1)",
-                        "rgba(255, 99, 132, 1)",
-                      ],
-                      borderWidth: 1,
-                    },
-                  ],
-                },
-              });
+              function myFunction_2() {
+                const ctx_2 = document.getElementById("myChart_2");
+                let positive =
+                  document.getElementById("positive_resultcar").value;
+                let negative =
+                  document.getElementById("negative_resultcar").value;
+                const myChart_2 = new Chart(ctx_2, {
+                  type: "doughnut",
+                  data: {
+                    labels: ["ผลบวก", "ผลลบ"],
+                    datasets: [
+                      {
+                        label: "# of Votes",
+                        data: [positive, negative],
+                        backgroundColor: [
+                          "rgb(255, 99, 132)",
+                          "rgb(54, 162, 235)",
+                        ],
+                        hoverOffset: 4,
+                      },
+                    ],
+                  },
+                });
+              }
             </script>
-            <h4 class="text-center my-3">น้ำหนักคำพยากรณ์ 30 %</h4>
+            <h4 class="text-center my-3">
+              น้ำหนักคำพยากรณ์ {{statement.positive_resultcar}} %
+            </h4>
           </div>
         </div>
       </div>

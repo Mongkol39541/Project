@@ -1,11 +1,13 @@
 from flask import Flask, render_template, request, redirect, url_for
 from flask_sqlalchemy import SQLAlchemy
 import os
+from calculateCar import Calculate
 
 app = Flask(__name__)
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///mystatement.db'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 database = SQLAlchemy(app)
+app.app_context().push()
 
 class Statement(database.Model):
     id = database.Column(database.Integer, primary_key=True)
@@ -14,9 +16,12 @@ class Statement(database.Model):
     image = database.Column(database.String(50), nullable=False, default="default.jpg")
     phone = database.Column(database.String(50), nullable=False)
     car = database.Column(database.String(50), nullable=False)
-    mes = database.Column(database.String(50), nullable=False)
-    positive_result = database.Column(database.Integer, nullable=False)
-    negative_result = database.Column(database.Integer, nullable=False)
+    mesphone = database.Column(database.String(200), nullable=False)
+    mescar = database.Column(database.String(200), nullable=False)
+    positive_resultphone = database.Column(database.Integer, nullable=False)
+    negative_resultphone = database.Column(database.Integer, nullable=False)
+    positive_resultcar = database.Column(database.Integer, nullable=False)
+    negative_resultcar = database.Column(database.Integer, nullable=False)
 
 database.create_all()
 
@@ -27,20 +32,24 @@ def login():
 @app.route("/sendphone/<int:id>", methods=['POST'])
 def sendphone(id):
     numberphone = request.form["numberphone"]
+    #mesphone, positive_resultphone, negative_resultphone = Calculate.carnumber(numberphone)
     statement = Statement.query.filter_by(id=id).first()
     statement.phone  = numberphone
+    statement.mesphone = "mesphone"
+    statement.positive_resultphone = 50
+    statement.negative_resultphone = 50
     database.session.commit()
-    mes, positive_result, negative_result = 0, 0, 0
-    statement.mes  = mes
-    statement.positive_result  = positive_result
-    statement.negative_result  = negative_result
     return redirect("/index/{0}".format(statement.id))
 
 @app.route("/sendcar/<int:id>", methods=['POST'])
 def sendcar(id):
     numbercar = request.form["numbercar"]
+    mescar, positive_resultcar, negative_resultcar = Calculate.carnumber(numbercar)
     statement = Statement.query.filter_by(id=id).first()
     statement.car  = numbercar
+    statement.mescar = mescar
+    statement.positive_resultcar = positive_resultcar
+    statement.negative_resultcar = negative_resultcar
     database.session.commit()
     return redirect("/index/{0}".format(statement.id))
 
@@ -57,7 +66,7 @@ def addUser():
     file = request.files["image"]
     image_file = save_image(file)
     url_for("static", filename="profile_image/"+image_file)
-    statement = Statement(name=name, date=date, image=file.filename, phone="", car="", mes="", positive_result=0, negative_result=0)
+    statement = Statement(name=name, date=date, image=file.filename, phone="", car="", mesphone="", mescar="", positive_resultphone=0, negative_resultphone=0, positive_resultcar=0, negative_resultcar=0)
     database.session.add(statement)
     database.session.commit()
     return redirect("/index/{0}".format(statement.id))

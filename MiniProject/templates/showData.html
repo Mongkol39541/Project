@@ -8,8 +8,10 @@
         <th>วันเดือนปีเกิด</th>
         <th>หมายเลขโทรศัพท์</th>
         <th>ทะเบียนรถยนต์</th>
-        <th>ผลบวก</th>
-        <th>ผลลบ</th>
+        <th>ผลบวกเบอร์โทรศัพท์</th>
+        <th>ผลลบเบอร์โทรศัพท์</th>
+        <th>ผลบวกทะเบียนรถยนต์</th>
+        <th>ผลลบทะเบียนรถยนต์</th>
       </tr>
     </thead>
     <tbody>
@@ -19,8 +21,10 @@
         <td>{{item.date}}</td>
         <td>{{item.phone}}</td>
         <td>{{item.car}}</td>
-        <td>{{item.positive_result}}</td>
-        <td>{{item.negative_result}}</td>
+        <td>{{item.positive_resultphone}}</td>
+        <td>{{item.negative_resultphone}}</td>
+        <td>{{item.positive_resultcar}}</td>
+        <td>{{item.negative_resultcar}}</td>
       </tr>
       {% endfor %}
     </tbody>
