@@ -25,14 +25,14 @@
     ></script>
   </head>
   <body class="p-3 mb-2 bg-dark">
-    <br /><br /><br />
+    <br />
     <div class="container my-3 bg-white rounded w-50">
       <div class="row">
         <div class="col align-self-center my-3">
-          <br /><br />
-          <h3 class="text-center">สมาชิก</h3>
           <br />
-          <form action="/intoUser" method="post" enctype="multipart/form-data">
+          <h3 class="text-center">ลงทะเบียนสมาชิก</h3>
+          <br />
+          <form action="/addUser" method="post" enctype="multipart/form-data">
             <div class="form-group my-3">
               <label for="name">ชื่อผู้ใช้งาน</label>
               <br /><br />
@@ -42,8 +42,9 @@
                 class="form-control text-center col align-self-center"
               />
             </div>
+            <br />
             <div class="form-group my-3">
-              <label for="password">รหัสผ่านของผู้ใช้งาน</label>
+              <label for="password">ตั้งรหัสผ่านของผู้ใช้งาน</label>
               <br /><br />
               <input
                 type="text"
@@ -52,16 +53,36 @@
               />
             </div>
             <br />
+            <div class="form-group my-3">
+              <label for="date">วัน/เดือน/ปี</label>
+              <br /><br />
+              <input
+                type="date"
+                name="date"
+                class="form-control text-center col align-self-center"
+              />
+            </div>
+            <br /><br />
+            <label for="image">อัพโหลดไฟล์</label>
+            <br /><br />
+            <div class="input-group mb-3">
+              <input
+                type="file"
+                name="image"
+                class="form-control"
+                id="inputGroupFile01"
+              />
+            </div>
+            <br />
             <p class="text-center">
               <input
                 type="submit"
-                value="เข้าสู่ระบบ"
+                value="สมัครเข้าใช้งาน"
                 class="btn btn-outline-dark me-3"
               />
-              <a href="/" class="btn btn-dark">สมัครเข้าใช้งาน</a>
+              <a href="/login" class="btn btn-dark">เข้าสู่ระบบสมาชิก</a>
             </p>
           </form>
-          <div class="alert alert-{{color}}" role="alert">{{mes}}</div>
         </div>
       </div>
     </div>
