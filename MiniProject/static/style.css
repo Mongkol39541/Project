@@ -1,7 +1,25 @@
-#about {
-  min-height: 550px;
+#devdata {
+  height: 2150px;
   position: relative;
-  background-image: url("../static/dataimage/torii.jpg");
+  background-image: url("../static/dataimage/code.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+}
+
+#indexmain {
+  height: 1325px;
+  position: relative;
+  background-image: url("../static/dataimage/code.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+}
+
+#predict {
+  height: 850px;
+  position: relative;
+  background-image: url("../static/dataimage/code.jpg");
   background-size: cover;
   background-repeat: no-repeat;
   background-attachment: fixed;
@@ -24,5 +42,5 @@ body {
 
 #chartdiv {
   width: 100%;
-  height: 1000px;
+  height: 1200px;
 }

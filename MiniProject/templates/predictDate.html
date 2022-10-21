@@ -1,0 +1,48 @@
+{% extends "layout.html" %} {% block body %}
+
+<section id="predict">
+  <div class="dark-overlay">
+    <div class="p-3">
+      <br /><br /><br /><br />
+      <div class="col my-2">
+        <div class="alert alert-light" role="alert">
+          <input
+            type="hidden"
+            id="positive_result"
+            value="{{statement.positive_resultdate}}"
+            name="positive_result"
+          />
+          <input
+            type="hidden"
+            id="negative_result"
+            value="{{statement.negative_resultdate}}"
+            name="negative_result"
+          />
+          <h2 class="alert-heading">
+            ทำนายโชคชะตาของผู้ใช้ทะเบียนบ้าน {{statement.date}} เป็นประจำ
+          </h2>
+          <hr />
+          <h4 class="mb-0">{{statement.mesdate}}</h4>
+          <script src="https://cdn.amcharts.com/lib/4/core.js"></script>
+          <script src="https://cdn.amcharts.com/lib/4/charts.js"></script>
+          <script src="http://cdn.amcharts.com/lib/4/themes/animated.js"></script>
+          <div id="grapdiv" style="width: 100%; height: 400px"></div>
+          <h2 class="text-center my-3">
+            มีค่าความโชคดี {{statement.positive_resultdate}} %
+          </h2>
+        </div>
+      </div>
+      <div class="col my-2 text-center">
+        <br />
+        <a
+          href="/index/{{statement.id}}"
+          type="button"
+          class="btn btn-outline-light"
+          ><h3>กลับไปหน้าหลัก</h3></a
+        >
+      </div>
+    </div>
+  </div>
+</section>
+
+{% endblock %}
