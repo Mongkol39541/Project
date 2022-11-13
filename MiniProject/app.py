@@ -1,7 +1,8 @@
 from flask import Flask, render_template, request, redirect, url_for
 from flask_sqlalchemy import SQLAlchemy
 import os
-from calculateCar import Calculate
+from calculateCar import calculatecar
+from calculateDay import calculateday
 from project2 import acx
 
 app = Flask(__name__)
@@ -21,14 +22,13 @@ class Statement(database.Model):
     house = database.Column(database.String(50), nullable=False)
     mesphone = database.Column(database.String(200), nullable=False)
     mescar = database.Column(database.String(200), nullable=False)
-    mesdate = database.Column(database.String(200), nullable=False)
+    mesday = database.Column(database.String(200), nullable=False)
+    mesmonth = database.Column(database.String(200), nullable=False)
     meshouse = database.Column(database.String(200), nullable=False)
     positive_resultphone = database.Column(database.Integer, nullable=False)
     negative_resultphone = database.Column(database.Integer, nullable=False)
     positive_resultcar = database.Column(database.Integer, nullable=False)
     negative_resultcar = database.Column(database.Integer, nullable=False)
-    positive_resultdate = database.Column(database.Integer, nullable=False)
-    negative_resultdate = database.Column(database.Integer, nullable=False)
     positive_resulthouse = database.Column(database.Integer, nullable=False)
     negative_resulthouse = database.Column(database.Integer, nullable=False)
     total_positive = database.Column(database.Integer, nullable=False)
@@ -48,11 +48,6 @@ def sendphone(id):
     numberphone = request.form["numberphone"]
     statement = Statement.query.filter_by(id=id).first()
     while not(numberphone.isnumeric()) or not(len(numberphone) == 10):
-        statement.phone  = ""
-        statement.mesphone = "Please Enter numeric only and full number."
-        statement.positive_resultphone = 0
-        statement.negative_resultphone = 0
-        database.session.commit()
         return redirect("/index/{0}".format(statement.id))
     mesphone, positive_resultphone, negative_resultphone = acx.main(numberphone)
     statement.phone  = numberphone
@@ -67,13 +62,8 @@ def sendcar(id):
     numbercar = request.form["numbercar"]
     statement = Statement.query.filter_by(id=id).first()
     while not(numbercar.isnumeric()) or not(len(numbercar) == 4):
-        statement.car  = ""
-        statement.mescar = "Please Enter numeric only and full number."
-        statement.positive_resultcar = 0
-        statement.negative_resultcar = 0
-        database.session.commit()
         return redirect("/index/{0}".format(statement.id))
-    mescar, positive_resultcar, negative_resultcar = Calculate.carnumber(numbercar)
+    mescar, positive_resultcar, negative_resultcar = calculatecar.carnumber(numbercar)
     statement.car  = numbercar
     statement.mescar = mescar
     statement.positive_resultcar = positive_resultcar
@@ -85,18 +75,12 @@ def sendcar(id):
 def senddate(id):
     numberdate = request.form["numberdate"]
     statement = Statement.query.filter_by(id=id).first()
-    while not(numberdate.isnumeric()) or not(len(numberdate) == 6):
-        statement.date  = ""
-        statement.mesdate = "Please Enter numeric only and full number."
-        statement.positive_resultdate = 0
-        statement.negative_resultdate = 0
-        database.session.commit()
+    while not(len(numberdate) == 5):
         return redirect("/index/{0}".format(statement.id))
-    #mesdate, positive_resultdate, negative_resultdate = Calculate.carnumber(numberdate)
+    mesday, mesmonth = calculateday.carnumber(numberdate)
     statement.date  = numberdate
-    statement.mesdate = "mesdate"
-    statement.positive_resultdate = 50
-    statement.negative_resultdate = 50
+    statement.mesday = mesday
+    statement.mesmonth = mesmonth
     database.session.commit()
     return redirect("/predictDate/{0}".format(statement.id))
 
@@ -105,11 +89,6 @@ def sendhouse(id):
     numberhouse = request.form["numberhouse"]
     statement = Statement.query.filter_by(id=id).first()
     while not(numberhouse.isnumeric()) or not(len(numberhouse) == 4):
-        statement.house  = ""
-        statement.meshouse = "Please Enter numeric only and full number."
-        statement.positive_resulthouse = 0
-        statement.negative_resulthouse = 0
-        database.session.commit()
         return redirect("/index/{0}".format(statement.id))
     #meshouse, positive_resulthouse, negative_resulthouse = Calculate.carnumber(numberhouse)
     statement.house  = numberhouse
@@ -139,7 +118,7 @@ def addUser():
         url_for("static", filename="profile_image/"+image_file)
     except:
         file.filename = "profile.jpg"
-    statement = Statement(name=name, password=password, image=file.filename, phone="", car="", date="", house="",mesphone="", mescar="", mesdate="", meshouse="",positive_resultphone=0, negative_resultphone=0, positive_resultcar=0, negative_resultcar=0, positive_resultdate=0, negative_resultdate=0, positive_resulthouse=0, negative_resulthouse=0, total_positive=0)
+    statement = Statement(name=name, password=password, image=file.filename, phone="", car="", date="", house="",mesphone="", mescar="", mesday="", mesmonth="", meshouse="",positive_resultphone=0, negative_resultphone=0, positive_resultcar=0, negative_resultcar=0, positive_resulthouse=0, negative_resulthouse=0, total_positive=0)
     database.session.add(statement)
     database.session.commit()
     return redirect("/index/{0}".format(statement.id))
@@ -192,7 +171,7 @@ def dataDeveloper(id):
 @app.route("/showData/<int:id>")
 def showData(id):
     statement = Statement.query.filter_by(id=id).first()
-    total = (statement.positive_resultphone + statement.positive_resultcar + statement.positive_resultdate + statement.positive_resulthouse) / 4
+    total = (statement.positive_resultphone + statement.positive_resultcar + statement.positive_resulthouse) / 3
     statement.total_positive = total
     database.session.commit()
     data = Statement.query.all()

@@ -1,4 +1,4 @@
-class Calculate:
+class calculatecar:
     def carnumber(number):
         numset = list(number)
         cal_1 = int(numset[0])+int(numset[1])+int(numset[2])+int(numset[3])
