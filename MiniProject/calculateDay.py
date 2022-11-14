@@ -1,7 +1,7 @@
 import pandas as pd
 
 class calculateday:
-        def carnumber(number):
+        def daynumber(number):
             df_day = pd.read_csv("number_day.csv")
             df_month = pd.read_csv("number_month.csv")
             number_day, number_month = number.split("/")
