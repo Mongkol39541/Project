@@ -1,22 +1,62 @@
 {% extends "layout.html" %} {% block body %}
 
-<div class="p-3">
-  <br /><br /><br /><br />
-  <table class="table table-dark table-hover text-center">
+<div class="container p-3">
+  <br /><br />
+  <div class="p-3 card border-dark mb-3 bg-light text-dark">
+    <h1 class="card-body text-center">
+      <strong>👑 {{statement.name}} อันดับที่ {{unit}}</strong>
+    </h1>
+  </div>
+  <br />
+  <table class="table table-light table-hover text-center">
     <thead>
       <tr>
-        <th>โปรไฟล์</th>
-        <th>ชื่อผู้ใช้งาน</th>
-        <th>หมายเลขโทรศัพท์</th>
-        <th>ทะเบียนรถยนต์</th>
-        <th>วันเดือนปีเกิด</th>
-        <th>ทะเบียนบ้าน</th>
-        <th>ค่าความโชคดีเฉลี่ย</th>
+        <th>
+          <br />
+          <h4><strong>อันดับโชค</strong></h4>
+          <br />
+        </th>
+        <th>
+          <br />
+          <h4><strong>โปรไฟล์</strong></h4>
+          <br />
+        </th>
+        <th>
+          <br />
+          <h4><strong>ชื่อผู้ใช้งาน</strong></h4>
+          <br />
+        </th>
+        <th>
+          <br />
+          <h4><strong>หมายเลขโทรศัพท์</strong></h4>
+          <br />
+        </th>
+        <th>
+          <br />
+          <h4><strong>ทะเบียนรถยนต์</strong></h4>
+          <br />
+        </th>
+        <th>
+          <br />
+          <h4><strong>วันเดือนปีเกิด</strong></h4>
+          <br />
+        </th>
+        <th>
+          <br />
+          <h4><strong>ทะเบียนบ้าน</strong></h4>
+          <br />
+        </th>
+        <th>
+          <br />
+          <h4><strong>ค่าความโชคดีเฉลี่ย</strong></h4>
+          <br />
+        </th>
       </tr>
     </thead>
     <tbody>
-      {% for item in data %}
+      {% for item, num in data%}
       <tr>
+        <td><h4 class="my-2">{{num}}</h4></td>
         <td>
           <img
             src="../static/profile_image/{{item.image}}"
@@ -36,6 +76,41 @@
       {% endfor %}
     </tbody>
   </table>
+  <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+    <div class="btn-group btn-group-lg" role="group">
+      <a class="btn btn-outline-light" href="/showData{{100}}/{{statement.id}}"
+        >1</a
+      >
+      <a class="btn btn-outline-light" href="/showData{{200}}/{{statement.id}}"
+        >2</a
+      >
+      <a class="btn btn-outline-light" href="/showData{{300}}/{{statement.id}}"
+        >3</a
+      >
+      <a class="btn btn-outline-light" href="/showData{{400}}/{{statement.id}}"
+        >4</a
+      >
+      <a class="btn btn-outline-light" href="/showData{{500}}/{{statement.id}}"
+        >5</a
+      >
+      <a class="btn btn-outline-light" href="/showData{{600}}/{{statement.id}}"
+        >6</a
+      >
+      <a class="btn btn-outline-light" href="/showData{{700}}/{{statement.id}}"
+        >7</a
+      >
+      <a class="btn btn-outline-light" href="/showData{{800}}/{{statement.id}}"
+        >8</a
+      >
+      <a class="btn btn-outline-light" href="/showData{{900}}/{{statement.id}}"
+        >9</a
+      >
+      <a class="btn btn-outline-light" href="/showData{{1000}}/{{statement.id}}"
+        >10</a
+      >
+    </div>
+  </div>
+  <br /><br />
 </div>
 
 {% endblock %}

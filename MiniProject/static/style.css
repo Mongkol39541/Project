@@ -11,5 +11,20 @@ body {
 
 #chartdiv {
   width: 100%;
-  height: 1200px;
+  height: 1500px;
+}
+
+#chartdivcategories {
+  width: 100%;
+  height: 800px;
+}
+
+#pricecategories {
+  width: 100%;
+  height: 500px;
+}
+
+#pricedouble {
+  width: 100%;
+  height: 500px;
 }

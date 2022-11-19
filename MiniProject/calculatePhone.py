@@ -8,9 +8,6 @@ def phonenumber(p_number):
     mean_duo_af = ""
     category = ""
     category_test = []
-    while not(p_number.isnumeric()) or not(len(p_number) == 10):
-        print("Please Enter numeric only and full number.")
-        p_number = input()
     for i in p_number:
         sum += int(i)
     data = Datanumber.number_phone()

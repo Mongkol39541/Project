@@ -5,6 +5,7 @@ from calculateCar import carnumber, percarnumber
 from calculateDay import calculateday
 from calculateHouse import calculatehouse
 from calculatePhone import phonenumber
+import pandas as pd
 
 app = Flask(__name__)
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///mystatement.db'
@@ -18,6 +19,7 @@ class Statement(database.Model):
     password = database.Column(database.String(50), primary_key=False)
     image = database.Column(database.String(50), nullable=False, default="default.jpg")
     phone = database.Column(database.String(50), nullable=False)
+    price = database.Column(database.String(50), nullable=False)
     car = database.Column(database.String(50), nullable=False)
     date = database.Column(database.String(50), nullable=False)
     house = database.Column(database.String(50), nullable=False)
@@ -51,69 +53,77 @@ def login():
 def sendphone(id):
     numberphone = request.form["numberphone"]
     statement = Statement.query.filter_by(id=id).first()
-    while not(numberphone.isnumeric()) or not(len(numberphone) == 10):
+    try:
+        sumphone, mesphone, positive_resultphone, negative_resultphone, double_num, mean_duo_af, category = phonenumber(numberphone)
+        statement.sumphone = sumphone
+        statement.phone  = numberphone
+        statement.mesphone = mesphone
+        statement.mesphone = mesphone
+        statement.double_num = double_num
+        statement.mean_duo_af = mean_duo_af
+        statement.category = category
+        statement.positive_resultphone = positive_resultphone
+        statement.negative_resultphone = negative_resultphone
+        database.session.commit()
+        return redirect("/predictPhone/{0}".format(statement.id))
+    except:
         return redirect("/index/{0}".format(statement.id))
-    sumphone, mesphone, positive_resultphone, negative_resultphone, double_num, mean_duo_af, category = phonenumber(numberphone)
-    statement.sumphone = sumphone
-    statement.phone  = numberphone
-    statement.mesphone = mesphone
-    statement.mesphone = mesphone
-    statement.double_num = double_num
-    statement.mean_duo_af = mean_duo_af
-    statement.category = category
-    statement.positive_resultphone = positive_resultphone
-    statement.negative_resultphone = negative_resultphone
-    database.session.commit()
-    return redirect("/predictPhone/{0}".format(statement.id))
 
 @app.route("/sendcar/<int:id>", methods=['POST'])
 def sendcar(id):
     numbercar = request.form["numbercar"]
     statement = Statement.query.filter_by(id=id).first()
-    while len(numbercar) > 7:
+    try:
+        mescar = carnumber(numbercar)
+        positive_resultcar, negative_resultcar = percarnumber(numbercar)
+        statement.car  = numbercar
+        statement.mescar = mescar
+        statement.positive_resultcar = positive_resultcar
+        statement.negative_resultcar = negative_resultcar
+        database.session.commit()
+        return redirect("/predictCar/{0}".format(statement.id))
+    except:
         return redirect("/index/{0}".format(statement.id))
-    mescar = carnumber(numbercar)
-    positive_resultcar, negative_resultcar = percarnumber(numbercar)
-    statement.car  = numbercar
-    statement.mescar = mescar
-    statement.positive_resultcar = positive_resultcar
-    statement.negative_resultcar = negative_resultcar
-    database.session.commit()
-    return redirect("/predictCar/{0}".format(statement.id))
 
 @app.route("/senddate/<int:id>", methods=['POST'])
 def senddate(id):
     numberdate = request.form["numberdate"]
     statement = Statement.query.filter_by(id=id).first()
-    while not(len(numberdate) == 5):
+    try:
+        mesday, mesmonth = calculateday.daynumber(numberdate)
+        statement.date  = numberdate
+        statement.mesday = mesday
+        statement.mesmonth = mesmonth
+        database.session.commit()
+        return redirect("/predictDate/{0}".format(statement.id))
+    except:
         return redirect("/index/{0}".format(statement.id))
-    mesday, mesmonth = calculateday.daynumber(numberdate)
-    statement.date  = numberdate
-    statement.mesday = mesday
-    statement.mesmonth = mesmonth
-    database.session.commit()
-    return redirect("/predictDate/{0}".format(statement.id))
 
 @app.route("/sendhouse/<int:id>", methods=['POST'])
 def sendhouse(id):
     numberhouse = request.form["numberhouse"]
     statement = Statement.query.filter_by(id=id).first()
-    while len(numberhouse) > 7:
+    try:
+        sumhouse, meshouse = calculatehouse.housenumber(numberhouse)
+        statement.sumhouse = sumhouse
+        statement.house  = numberhouse
+        statement.meshouse = meshouse
+        statement.positive_resulthouse = 50
+        statement.negative_resulthouse = 50
+        database.session.commit()
+        return redirect("/predictHouse/{0}".format(statement.id))
+    except:
         return redirect("/index/{0}".format(statement.id))
-    sumhouse, meshouse = calculatehouse.housenumber(numberhouse)
-    statement.sumhouse = sumhouse
-    statement.house  = numberhouse
-    statement.meshouse = meshouse
-    statement.positive_resulthouse = 50
-    statement.negative_resulthouse = 50
-    database.session.commit()
-    return redirect("/predictHouse/{0}".format(statement.id))
 
 def save_image(image_file):
     image_name = image_file.filename
     image_path = os.path.join(app.root_path, "static/profile_image", image_name)
     image_file.save(image_path)
     return image_name
+
+def splitdata(data):
+    data = data[:len(data ) - 1].split(" ")
+    return data
 
 @app.route("/addUser", methods=['POST'])
 def addUser():
@@ -129,7 +139,7 @@ def addUser():
         url_for("static", filename="profile_image/"+image_file)
     except:
         file.filename = "profile.jpg"
-    statement = Statement(name=name, password=password, image=file.filename, phone="", car="", date="", house="", sumphone='', sumhouse='',mesphone="", mescar="", mesday="", mesmonth="", meshouse="", double_num='', mean_duo_af='', category='',positive_resultphone=0, negative_resultphone=0, positive_resultcar=0, negative_resultcar=0, total_positive=0)
+    statement = Statement(name=name, password=password, image=file.filename, phone="", price=0, car="", date="", house="", sumphone='', sumhouse='',mesphone="", mescar="", mesday="", mesmonth="", meshouse="", double_num='', mean_duo_af='', category='',positive_resultphone=0, negative_resultphone=0, positive_resultcar=0, negative_resultcar=0, total_positive=0)
     database.session.add(statement)
     database.session.commit()
     return redirect("/index/{0}".format(statement.id))
@@ -159,10 +169,10 @@ def predictPhone(id):
     statement = Statement.query.filter_by(id=id).first()
     double_num = statement.double_num
     mean_duo_af = statement.mean_duo_af
-    category = statement.category
-    double_num = double_num[:len(double_num) - 1].split(" ")
-    mean_duo_af = mean_duo_af[:len(mean_duo_af) - 1].split(" ")
-    category  = category [:len(category ) - 1].split(" ")
+    category = category = statement.category
+    double_num = splitdata(double_num)
+    mean_duo_af = splitdata(mean_duo_af)
+    category = splitdata(category)
     data2D = []
     for loop in range(len(double_num)):
         data = {'double_num':double_num[loop], 'mean_duo_af':mean_duo_af[loop]}
@@ -189,30 +199,53 @@ def dataDeveloper(id):
     statement = Statement.query.filter_by(id=id).first()
     return render_template("dataDeveloper.html", statement=statement)
 
-@app.route("/showData/<int:id>")
-def showData(id):
+@app.route("/showData<int:select>/<int:id>")
+def showData(id, select):
     statement = Statement.query.filter_by(id=id).first()
     total = (statement.positive_resultphone + statement.positive_resultcar) / 2
     statement.total_positive = total
     database.session.commit()
     data = Statement.query.all()
-    newdata = []
     number = []
+    top = 0
+    datatop = []
     for num in data:
         number.append(num.total_positive)
     number.sort(reverse=True)
     for che in number:
+        newdata = []
+        top += 1
         for txt in range(len(data)):
             if data[txt].total_positive == che:
                 value = data.pop(txt)
+                if value.id == id:
+                    unit = top
                 newdata.append(value)
+                newdata.append(top)
                 break
-    return render_template("showData.html", statement=statement, data=newdata)
+        datatop.append(newdata)
+    return render_template("showData.html", statement=statement, data=datatop[select - 100:select], unit=unit)
 
 @app.route("/relationship/<int:id>")
 def relationship(id):
     statement = Statement.query.filter_by(id=id).first()
-    return render_template("relationship.html", statement=statement)
+    data_category = pd.read_csv('counts_category.csv')
+    data_double = pd.read_csv('counts_double.csv')
+    name_category = ''
+    num_category = []
+    price_category = []
+    for loop_category in range(len(data_category.counts)):
+        name_category += data_category.category[loop_category] + " "
+        num_category.append(data_category.counts[loop_category])
+        price_category.append(data_category.price[loop_category] // data_category.counts[loop_category])
+    name_double = ''
+    num_double = []
+    price_double = []
+    for loop_double in range(len(data_double.counts)):
+        name_double += str(data_double.double[loop_double]) + " "
+        num_double.append(data_double.counts[loop_double])
+        price_double.append(data_double.price[loop_double] // data_double.counts[loop_double])
+    return render_template("relationship.html", statement=statement, name_category=name_category, num_category=num_category, price_category=price_category, name_double=name_double, price_double=price_double)
 
 if __name__ == "__main__":
     app.run(debug=True)
