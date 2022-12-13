@@ -1,8 +1,9 @@
 class calculatehouse:
     def housenumber(number):
-        number = number.split("/")
-        number = number[0] + number[1]
         cal_3 = str(number)
+        if "/" in cal_3:
+            cal_3 = cal_3.split("/")
+            cal_3 = cal_3[0] + cal_3[1]
         if len(cal_3) == 1:
             cal_2 = int(cal_3)
         elif len(cal_3) == 2:
@@ -15,11 +16,18 @@ class calculatehouse:
             cal_2 = int(cal_3[0])+int(cal_3[1])+int(cal_3[2])+int(cal_3[3])+int(cal_3[4])
         elif len(cal_3) == 6:
             cal_2 = int(cal_3[0])+int(cal_3[1])+int(cal_3[2])+int(cal_3[3])+int(cal_3[4])+int(cal_3[5])
+        elif len(cal_3) == 7:
+            cal_2 = int(cal_3[0])+int(cal_3[1])+int(cal_3[2])+int(cal_3[3])+int(cal_3[4])+int(cal_3[5])+int(cal_3[6])
+        elif len(cal_3) == 8:
+            cal_2 = int(cal_3[0])+int(cal_3[1])+int(cal_3[2])+int(cal_3[3])+int(cal_3[4])+int(cal_3[5])+int(cal_3[6])+int(cal_3[7])
         cal_5 = str(cal_2)
         if len(cal_5) == 1:
             cal_4 = int(cal_5)
         elif len(cal_5) != 1:
             cal_4 = int(cal_5[0])+int(cal_5[1])
+        cal_6 = str(cal_4)
+        if len(cal_6) == 2:
+            cal_4 = int(cal_6[0])+int(cal_6[1])
         if cal_4 == 1:
             mes = "ผู้ที่อยู่อาศัยภายในบ้านหลังนี้มักมีความเป็นผู้นำสูง ใจร้อน กล้าคิดกล้าทำ แต่ว่าคนใจอ่อนชอบช่วยเหลือคนอื่น ๆ เลยทำให้มีเรื่องไม่สบายใจอยู่บ่อยครั้ง รวมทั้งผู้อยู่อาศัยจะมีลูกหลานเยอะ สมาชิกในบ้านมีหลายคน จะมีคนแวะเวียนมาหาอยู่ตลอดเวลา ส่วนหน้าที่การงานจะมีความเจริญรุ่งเรืองดี หากมีอาชีพรับราชการก็จะมีความก้าวหน้าในตำแหน่งหน้าที่การงาน มีผู้คนนับหน้าถือตา แต่ถ้าเป็นเจ้าของกิจการหรือนักธุรกิจก็สามารถประสบความสำเร็จได้ นอกจากนี้ หากบ้านมีพื้นที่กว้างขวาง ภายในบ้านปลูกต้นไม้ที่มีลักษณะลำต้นตรง เช่น “ไผ่” หรือ “มะพร้าว” จะช่วยส่งเสริมดวงชะตาผู้อยู่อาศัยมากยิ่งขึ้นอีกด้วย"
         elif cal_4 == 2:

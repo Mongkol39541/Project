@@ -13,6 +13,7 @@ app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 database = SQLAlchemy(app)
 app.app_context().push()
 
+
 class Statement(database.Model):
     id = database.Column(database.Integer, primary_key=True)
     name = database.Column(database.String(50), primary_key=False)
@@ -122,7 +123,7 @@ def save_image(image_file):
     return image_name
 
 def splitdata(data):
-    data = data[:len(data ) - 1].split(" ")
+    data = data[:len(data ) - 1].split(",")
     return data
 
 @app.route("/addUser", methods=['POST'])
@@ -235,14 +236,14 @@ def relationship(id):
     num_category = []
     price_category = []
     for loop_category in range(len(data_category.counts)):
-        name_category += data_category.category[loop_category] + " "
+        name_category += data_category.category[loop_category] + ","
         num_category.append(data_category.counts[loop_category])
         price_category.append(data_category.price[loop_category] // data_category.counts[loop_category])
     name_double = ''
     num_double = []
     price_double = []
     for loop_double in range(len(data_double.counts)):
-        name_double += str(data_double.double[loop_double]) + " "
+        name_double += str(data_double.double[loop_double]) + ","
         num_double.append(data_double.counts[loop_double])
         price_double.append(data_double.price[loop_double] // data_double.counts[loop_double])
     return render_template("relationship.html", statement=statement, name_category=name_category, num_category=num_category, price_category=price_category, name_double=name_double, price_double=price_double)

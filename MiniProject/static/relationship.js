@@ -1,15 +1,15 @@
-var chart = am4core.create(
-    "chartdiv",
+var chart_pos = am4core.create(
+    "chartdiv_pos",
     am4plugins_forceDirected.ForceDirectedTree
 );
 
 // Create series
-var series = chart.series.push(
+var series_pos = chart_pos.series.push(
     new am4plugins_forceDirected.ForceDirectedSeries()
 );
 
 // Set data
-series.data = [
+series_pos.data = [
     {
         name: "คู่เลขมงคล",
         children: [
@@ -282,6 +282,39 @@ series.data = [
                     },
                 ],
             },
+        ],
+    },
+];
+
+// Set up data fields
+series_pos.dataFields.value = "value";
+series_pos.dataFields.name = "name";
+series_pos.dataFields.children = "children";
+
+// Add labels
+series_pos.nodes.template.label.text = "{name}";
+series_pos.fontSize = 14;
+series_pos.minRadius = 30;
+series_pos.maxRadius = 100;
+
+series_pos.centerStrength = 0.5;
+series_pos.links.template.distance = 1.5;
+
+var chart_neg = am4core.create(
+    "chartdiv_neg",
+    am4plugins_forceDirected.ForceDirectedTree
+);
+
+// Create series
+var series_neg = chart_neg.series.push(
+    new am4plugins_forceDirected.ForceDirectedSeries()
+);
+
+// Set data
+series_neg.data = [
+    {
+        name: "คู่เลขไม่มงคล",
+        children: [
             {
                 name: "มีปัญหาด้าน\nการเงิน",
                 children: [
@@ -677,15 +710,15 @@ series.data = [
 ];
 
 // Set up data fields
-series.dataFields.value = "value";
-series.dataFields.name = "name";
-series.dataFields.children = "children";
+series_neg.dataFields.value = "value";
+series_neg.dataFields.name = "name";
+series_neg.dataFields.children = "children";
 
 // Add labels
-series.nodes.template.label.text = "{name}";
-series.fontSize = 14;
-series.minRadius = 30;
-series.maxRadius = 100;
+series_neg.nodes.template.label.text = "{name}";
+series_neg.fontSize = 14;
+series_neg.minRadius = 30;
+series_neg.maxRadius = 100;
 
-series.centerStrength = 0.5;
-series.links.template.distance = 1.5;
+series_neg.centerStrength = 0.5;
+series_neg.links.template.distance = 1.5;

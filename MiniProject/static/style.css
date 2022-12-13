@@ -9,7 +9,12 @@ body {
     "Segoe UI Symbol";
 }
 
-#chartdiv {
+#chartdiv_pos {
+  width: 100%;
+  height: 1500px;
+}
+
+#chartdiv_neg {
   width: 100%;
   height: 1500px;
 }
@@ -27,4 +32,9 @@ body {
 #pricedouble {
   width: 100%;
   height: 500px;
+}
+
+#beta {
+  background-color: #b3990b;
+  color: rgb(255, 255, 255);
 }

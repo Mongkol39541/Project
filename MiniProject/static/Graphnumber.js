@@ -11,11 +11,11 @@ chart.innerRadius = am4core.percent(40);
 chart.data = [{
     "result": "positive",
     "percentage": positive,
-    "color": am4core.color("#ED1C24")
+    "color": am4core.color("#b3990b")
   }, {
     "result": "negative",
     "percentage": negative,
-    "color": am4core.color("#020100")
+    "color": am4core.color("#363322")
   }];
 
 // Add and configure Series

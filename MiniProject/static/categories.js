@@ -4,7 +4,7 @@ am4core.ready(function () {
     chart.hiddenState.properties.opacity = 0;
     let category = document.getElementById("category").value;
     let counts = document.getElementById("counts_category").value;
-    let newcategory = category.slice(0, category.length - 1).split(" ");
+    let newcategory = category.slice(0, category.length - 1).split(",");
     let newcounts = counts.slice(1, counts.length - 1).split(", ");
     chart.data = [];
     for (let i = 0; i < newcategory.length; i++) {
@@ -32,7 +32,7 @@ am4core.ready(function () {
     chart.hiddenState.properties.opacity = 0;
     let category = document.getElementById("category").value;
     let counts = document.getElementById("price_category").value;
-    let newcategory = category.slice(0, category.length - 1).split(" ");
+    let newcategory = category.slice(0, category.length - 1).split(",");
     let newcounts = counts.slice(1, counts.length - 1).split(", ");
     chart.data = [];
     for (let i = 0; i < newcategory.length; i++) {
@@ -54,13 +54,13 @@ am4core.ready(function () {
     categoryAxis.tooltip.label.verticalCenter = "middle";
 
     let valueAxis = chart.yAxes.push(new am4charts.ValueAxis());
-    valueAxis.title.text = "Price (Dollar)";
+    valueAxis.title.text = "Price (Baht)";
 
     // Create series
     var series = chart.series.push(new am4charts.ColumnSeries3D());
     series.dataFields.valueY = "num";
     series.dataFields.categoryX = "category";
-    series.tooltipText = "{categoryX}: {valueY}[/] ดอลลาร์";
+    series.tooltipText = "{categoryX}: {valueY}[/] บาท";
     series.columns.template.fillOpacity = .8;
 
     var columnTemplate = series.columns.template;

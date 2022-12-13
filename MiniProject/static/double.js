@@ -4,7 +4,7 @@ am4core.ready(function () {
     chart.hiddenState.properties.opacity = 0;
     let double = document.getElementById("double").value;
     let counts = document.getElementById("price_double").value;
-    let newdouble = double.slice(0, double.length - 1).split(" ");
+    let newdouble = double.slice(0, double.length - 1).split(",");
     let newcounts = counts.slice(1, counts.length - 1).split(", ");
     chart.data = [];
     for (let i = 0; i < newdouble.length; i++) {
@@ -26,13 +26,13 @@ am4core.ready(function () {
     categoryAxis.tooltip.label.verticalCenter = "middle";
 
     let valueAxis = chart.yAxes.push(new am4charts.ValueAxis());
-    valueAxis.title.text = "Price (Dollar)";
+    valueAxis.title.text = "Price (Baht)";
 
     // Create series
     var series = chart.series.push(new am4charts.ColumnSeries3D());
     series.dataFields.valueY = "num";
     series.dataFields.categoryX = "double";
-    series.tooltipText = "{categoryX}: {valueY}[/] ดอลลาร์";
+    series.tooltipText = "{categoryX}: {valueY}[/] บาท";
     series.columns.template.fillOpacity = .8;
 
     var columnTemplate = series.columns.template;
