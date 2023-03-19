@@ -1,18 +1,17 @@
 {% extends "layout.html" %} {% block body %}
 
 <div
-  class="container my-3 p-3 position-absolute top-0 start-50 translate-middle-x text-center"
+  class="my-3 p-3 position-relative top-0 start-50 translate-middle-x text-center"
 >
-  <br />
-  <h1 class="my-3 p- 3">โปรแกรมแปลภาษามือ</h1>
+  <h1 class="text-center p-3"><strong>{{name}}</strong></h1>
   <img
     class="rounded my-3 p- 3"
     width="800"
     height="600"
-    src="{{ url_for('video_feed') }}"
+    src="/video_feed/{{name}}"
   />
-  <br />
-  <a href="/" class="btn btn-danger">ปิดกล้อง</a>
+  <br /><br />
+  <a href="/" class="blackk">กลับสู่หน้าหลัก</a>
 </div>
 
 {% endblock %}

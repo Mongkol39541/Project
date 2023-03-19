@@ -49,7 +49,7 @@ def predict_model(cap, actions, model):
                 res = model.predict(np.expand_dims(sequence, axis=0))[0]
                 name = actions[np.argmax(res)]
                 cal = res[np.argmax(res)] * 100
-                if cal <= 50:
+                if cal <= 70:
                     name = "Do not know"
                 cv2.putText(frame, name, (50, 50), cv2.FONT_HERSHEY_SIMPLEX, 2, (0,255,0), 2)
                 cv2.putText(frame, str('%.2f' %(cal)) + " %", (50, 100), cv2.FONT_HERSHEY_SIMPLEX, 1, (0,255,0), 2)
